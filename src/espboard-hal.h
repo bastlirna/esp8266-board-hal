@@ -5,26 +5,26 @@
 
 namespace ESPBoard {
 
-    typedef enum _Button {
-        A = 0,
-        B
-    } Button;
+    enum Button {
+        BTN_A = 0,
+        BTN_B
+    };
 
-    typedef enum _Led {
-        Red = 0,
-        Green,
-        Blue
-    } Led;
+    enum Led {
+        LED_R = 0,
+        LED_G,
+        LED_B
+    };
 
-    typedef enum _LedState {
-        OFF = 0,
-        ON
-    } LedState;
+    enum LedState {
+        LED_OFF = 0,
+        LED_ON
+    };
 
-    typedef enum _BtnState {
-        RELEASED = 0,
-        PRESSED
-    } BtnState;
+    enum BtnState {
+        BTN_RELEASED = 0,
+        BTN_PRESSED
+    };
 
     class HAL{
         public:

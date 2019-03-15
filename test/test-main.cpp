@@ -34,46 +34,46 @@ static void test_humidity(void) {
 
 static void test_buttons(void) {
     
-    hal.setButton(Button::A, BtnState::RELEASED);
-    hal.setButton(Button::B, BtnState::RELEASED);
+    hal.setButton(BTN_A, BTN_RELEASED);
+    hal.setButton(BTN_B, BTN_RELEASED);
 
-    TEST_ASSERT_EQUAL(BtnState::RELEASED, hal.button(Button::A));
-    TEST_ASSERT_EQUAL(BtnState::RELEASED, hal.button(Button::B));
+    TEST_ASSERT_EQUAL(BTN_RELEASED, hal.button(BTN_A));
+    TEST_ASSERT_EQUAL(BTN_RELEASED, hal.button(BTN_B));
 
-    hal.setButton(Button::A, BtnState::PRESSED);
-    TEST_ASSERT_EQUAL(BtnState::PRESSED, hal.button(Button::A));
-    TEST_ASSERT_EQUAL(BtnState::RELEASED, hal.button(Button::B));
+    hal.setButton(BTN_A, BTN_PRESSED);
+    TEST_ASSERT_EQUAL(BTN_PRESSED, hal.button(BTN_A));
+    TEST_ASSERT_EQUAL(BTN_RELEASED, hal.button(BTN_B));
 
-    hal.setButton(Button::B, BtnState::PRESSED);
-    TEST_ASSERT_EQUAL(BtnState::PRESSED, hal.button(Button::A));
-    TEST_ASSERT_EQUAL(BtnState::PRESSED, hal.button(Button::B));
+    hal.setButton(BTN_B, BTN_PRESSED);
+    TEST_ASSERT_EQUAL(BTN_PRESSED, hal.button(BTN_A));
+    TEST_ASSERT_EQUAL(BTN_PRESSED, hal.button(BTN_B));
 
-    hal.setButton(Button::A, BtnState::RELEASED);
-    TEST_ASSERT_EQUAL(BtnState::RELEASED, hal.button(Button::A));
-    TEST_ASSERT_EQUAL(BtnState::PRESSED, hal.button(Button::B));
+    hal.setButton(BTN_A, BTN_RELEASED);
+    TEST_ASSERT_EQUAL(BTN_RELEASED, hal.button(BTN_A));
+    TEST_ASSERT_EQUAL(BTN_PRESSED, hal.button(BTN_B));
 
 }
 
 static void test_leds(void) {
     
-    hal.led(ESPBoard::Led::Red, LedState::OFF);
-    hal.led(ESPBoard::Led::Green, LedState::OFF);
-    hal.led(ESPBoard::Led::Blue, LedState::OFF);
+    hal.led(LED_R, LED_OFF);
+    hal.led(LED_G, LED_OFF);
+    hal.led(LED_B, LED_OFF);
     TEST_ASSERT_EQUAL_HEX32(0x000000, hal.getLed());
 
-    hal.led(ESPBoard::Led::Red, LedState::ON);
-    hal.led(ESPBoard::Led::Green, LedState::OFF);
-    hal.led(ESPBoard::Led::Blue, LedState::OFF);
+    hal.led(LED_R, LED_ON);
+    hal.led(LED_G, LED_OFF);
+    hal.led(LED_B, LED_OFF);
     TEST_ASSERT_EQUAL_HEX32(0xFF0000, hal.getLed());
 
-    hal.led(ESPBoard::Led::Red, LedState::OFF);
-    hal.led(ESPBoard::Led::Green, LedState::ON);
-    hal.led(ESPBoard::Led::Blue, LedState::OFF);
+    hal.led(LED_R, LED_OFF);
+    hal.led(LED_G, LED_ON);
+    hal.led(LED_B, LED_OFF);
     TEST_ASSERT_EQUAL_HEX32(0x00FF00, hal.getLed());
 
-    hal.led(ESPBoard::Led::Red, LedState::OFF);
-    hal.led(ESPBoard::Led::Green, LedState::OFF);
-    hal.led(ESPBoard::Led::Blue, LedState::ON);
+    hal.led(LED_R, LED_OFF);
+    hal.led(LED_G, LED_OFF);
+    hal.led(LED_B, LED_ON);
     TEST_ASSERT_EQUAL_HEX32(0x0000FF, hal.getLed());
 
 }
@@ -107,8 +107,8 @@ static void test_humidity_hw(void) {
 }
 
 static void test_btn_hw(void) {
-    TEST_ASSERT_EQUAL(BtnState::RELEASED, hal.button(Button::A));
-    TEST_ASSERT_EQUAL(BtnState::RELEASED, hal.button(Button::B));
+    TEST_ASSERT_EQUAL(BTN_RELEASED, hal.button(BTN_A));
+    TEST_ASSERT_EQUAL(BTN_RELEASED, hal.button(BTN_B));
 }
 
 #endif

@@ -6,8 +6,8 @@
 #define LED_PIN_G 12
 #define LED_PIN_B 16
 
-#define BTN_A 4
-#define BTN_B 5
+#define BTN_A_PIN 4
+#define BTN_B_PIN 5
 
 #define DHT_PIN 13
 

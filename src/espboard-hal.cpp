@@ -14,8 +14,8 @@ using namespace ESPBoard;
 #ifndef HAL_MOCK
 DHT dht(DHT_PIN, DHT_TYPE);
 DebouncedInput buttons[] { 
-    DebouncedInput(BTN_A, 20, true, DEBOUNCE_NUM_TO_KEEP), 
-    DebouncedInput(BTN_B, 20, true, DEBOUNCE_NUM_TO_KEEP)
+    DebouncedInput(BTN_A_PIN, 20, true, DEBOUNCE_NUM_TO_KEEP), 
+    DebouncedInput(BTN_B_PIN, 20, true, DEBOUNCE_NUM_TO_KEEP)
 };
 #endif
 
@@ -41,16 +41,16 @@ BtnState HAL::button(Button btn)
 { 
 #ifndef HAL_MOCK
     if (buttons[(uint8_t) btn].changedTo(LOW)) {
-        return BtnState::PRESSED;
+        return BTN_PRESSED;
     }
 
-    return BtnState::RELEASED; 
+    return BTN_RELEASED; 
 #else
     if((btnState & (1 << (uint32_t)btn)) != 0) {
-        return BtnState::PRESSED;
+        return BTN_PRESSED;
     }
 
-    return BtnState::RELEASED; 
+    return BTN_RELEASED; 
 #endif
 }
 
@@ -70,7 +70,7 @@ void HAL::led(Led led, LedState state)
 {
     uint16_t bitpos = 16 - (uint32_t)led * 8;
     ledVal &= ~(0xFF << bitpos);
-    if (state == LedState::ON) {
+    if (state == LED_ON) {
         ledVal |= (0xFF << bitpos);
     }
     ledColor(ledVal);
