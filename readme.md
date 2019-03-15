@@ -1,5 +1,7 @@
 # ESP8266 Demo Board - HAL
 
+[![Build Status](https://travis-ci.org/bastlirna/esp8266-board-hal.svg?branch=master)](https://travis-ci.org/bastlirna/esp8266-board-hal)
+
 ## Description
 
 Base [PlatformIO](https://platformio.org) library for ESP8266 Demo Board (github repo at [/bastlirna/esp8266-board](https://github.com/bastlirna/esp8266-board)). 
